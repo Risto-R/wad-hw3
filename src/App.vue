@@ -225,4 +225,7 @@
     #add-course {
         display: none;
     }
+    #add-course.active {
+        display: inline;
+    }
 </style>
