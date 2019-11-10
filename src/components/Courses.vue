@@ -55,6 +55,9 @@
                     semester: this.newSemester,
                     grade: this.newGrade
                 })
+                this.newTitle="";
+                this.newSemester="";
+                this.newGrade="";
             }
         }
     }

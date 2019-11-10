@@ -12,7 +12,7 @@
             </ul>
         </div>
         <div id="gpa">
-            <strong>{{user.gpa}}</strong>
+            <strong>{{gpaUpdate}}</strong>
         </div>
         <div class="clear-fix"></div>
     </div>
@@ -26,7 +26,7 @@
             user: Object
         },
 
-        computed:{
+        methods:{
             gpaUpdate:function(){
                 var totalgpa = 0;
                 for(var grade in this.courses.grade){
