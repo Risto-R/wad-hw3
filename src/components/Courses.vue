@@ -11,8 +11,8 @@
             </tr>
             </thead>
             <tbody>
-            <tr v-for="course in Courses" v-bind:key="course.id">
-                <td>{{course.id}}</td>
+            <tr v-for="(course,index) in Courses" v-bind:key="index">
+                <td>{{index}}</td>
                 <td>{{course.title}}</td>
                 <td>{{course.semester}}</td>
                 <td>{{course.grade}}</td>
