@@ -11,8 +11,8 @@
                 <li id="faculty">{{user.faculty}}</li>
             </ul>
         </div>
-        <div id="gpa">
-            <strong>{{gpaUpdate}}</strong>
+        <div>
+            <strong>{{user.gpa}}</strong>
         </div>
         <div class="clear-fix"></div>
     </div>
@@ -25,11 +25,10 @@
         props: {
             user: Object
         },
-
         methods:{
             gpaUpdate:function(){
                 var totalgpa = 0;
-                for(var grade in this.courses.grade){
+                for(var grade in this.Courses.grade){
                     if(grade > 90){
                         totalgpa += 4;
                     }
@@ -46,7 +45,7 @@
                         totalgpa += 0.5;
                     }
                 }
-                return totalgpa/this.courses.length ;
+                return totalgpa/this.Courses.length;
             }
         }
     }

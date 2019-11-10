@@ -35,7 +35,7 @@
                 courses: [new Course("Web Application Development", 3, 100),
                     new Course("Introduction to Data Science", 3, 91),
                     new Course("Software Engineering", 3, 87),
-                    new Course("Algorithms and data structures", 3, 85)]
+                    new Course("Algorithms and data structures", 3, 85)],
             }
         }
     }
