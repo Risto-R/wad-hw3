@@ -24,7 +24,30 @@
         name: "Profile",
         props: {
             user: Object
+        },
 
+        computed:{
+            gpaUpdate:function(){
+                var totalgpa = 0;
+                for(var grade in this.courses.grade){
+                    if(grade > 90){
+                        totalgpa += 4;
+                    }
+                    if(grade > 80 && grade <=90){
+                        totalgpa += 3;
+                    }
+                    if(grade > 70 && grade <=80){
+                        totalgpa += 2;
+                    }
+                    if(grade > 60 && grade <=70){
+                        totalgpa += 1;
+                    }
+                    if(grade > 50 && grade <= 60){
+                        totalgpa += 0.5;
+                    }
+                }
+                return totalgpa/this.courses.length ;
+            }
         }
     }
 </script>
