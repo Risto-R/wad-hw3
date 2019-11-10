@@ -11,29 +11,11 @@
             </tr>
             </thead>
             <tbody>
-            <tr>
-                <td>1</td>
-                <td>Agile software development</td>
-                <td>1</td>
-                <td>82</td>
-            </tr>
-            <tr>
-                <td>2</td>
-                <td>System modeling</td>
-                <td>1</td>
-                <td>85</td>
-            </tr>
-            <tr>
-                <td>3</td>
-                <td>Object-oriented programming</td>
-                <td>2</td>
-                <td>99</td>
-            </tr>
-            <tr>
-                <td>4</td>
-                <td>Estonian language Level A2</td>
-                <td>2</td>
-                <td>65</td>
+            <tr v-for="course in Courses" v-bind:key="course.id">
+                <td>{{course.id}}</td>
+                <td>{{course.title}}</td>
+                <td>{{course.semester}}</td>
+                <td>{{course.grade}}</td>
             </tr>
             </tbody>
         </table>
@@ -42,12 +24,14 @@
         <div>
             <button id="add-course-button" class="blue-button" @click="formActive = !formActive">+</button>
             <span id="add-course" v-bind:class="{active:formActive}">
-                                <input class="input" type="text" placeholder="Course title" id="title">
-                                <input class="input" type="number" min="1" max="8" placeholder="Semester" id="semester">
-                                <input class="input" type="number" min="0" max="100" placeholder="Grade" id="grade">
-                                <button class="green-button" id="save-course" @click="formActive = !formActive">Save</button>
-                                <button class="grey-button" id="cancel-course" @click="formActive = !formActive">Cancel</button>
-                            </span>
+                <form v-on:submit.prevent="addNewCourse">
+                    <input v-model="newTitle" type="text" placeholder="Course title" id="title">
+                    <input v-model="newSemester" type="number" min="1" max="8" placeholder="Semester" id="semester">
+                    <input v-model="newGrade" type="number" min="0" max="100" placeholder="Grade" id="grade">
+                    <button class="green-button" id="save-course" @click="formActive = !formActive;addNewCourse ">Save</button>
+                    <button class="grey-button" id="cancel-course" @click="formActive = !formActive">Cancel</button>
+                </form>
+            </span>
         </div>
     </div>
 </template>
@@ -58,9 +42,21 @@
         props: {Courses: Array},
         data: () => {
             return {
-                formActive: false
+                formActive: false,
+                newTitle:"",
+                newSemester:"",
+                newGrade:""
             }
         },
+        methods:{
+            addNewCourse:function(){
+                this.Courses.push({
+                    title: this.newTitle,
+                    semester: this.newSemester,
+                    grade: this.newGrade
+                })
+            }
+        }
     }
 </script>
 
