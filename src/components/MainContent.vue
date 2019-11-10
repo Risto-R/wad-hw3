@@ -12,7 +12,7 @@
             <button id="profile-button" class="pill" v-bind:class="{'is-active': active === true,active: active}"
                     name="button" @click="active=true">Profile
             </button>
-            <button id="courses-button" class="pill" :class="{'is-active': active === false,active: !active}"
+            <button id="courses-button" class="pill" v-bind:class="{'is-active': active === false,active: !active}"
                     name="button" @click="active=false">Courses
             </button>
         </div>
