@@ -24,13 +24,11 @@
         <div>
             <button id="add-course-button" class="blue-button" @click="formActive = !formActive">+</button>
             <span id="add-course" v-bind:class="{active:formActive}">
-                <form v-on:submit.prevent="addNewCourse">
                     <input v-model="newTitle" type="text" placeholder="Course title" id="title">
                     <input v-model="newSemester" type="number" min="1" max="8" placeholder="Semester" id="semester">
                     <input v-model="newGrade" type="number" min="0" max="100" placeholder="Grade" id="grade">
-                    <button class="green-button" id="save-course" @click="formActive = !formActive;addNewCourse">Save</button>
-                    <button class="grey-button" id="cancel-course" @click="formActive = !formActive;cancelNewCourse">Cancel</button>
-                </form>
+                    <button class="green-button" id="save-course" @click="formActive = !formActive;addNewCourse()">Save</button>
+                    <button class="grey-button" id="cancel-course" @click="formActive = !formActive;cancelNewCourse()">Cancel</button>
             </span>
         </div>
     </div>
@@ -85,11 +83,6 @@
                 this.user.gpa = totalgpa/count;
             },
             cancelNewCourse:function(){
-                this.Courses.remove({
-                    title:this.newTitle,
-                    semester:this.newSemester,
-                    grade: this.newGrade
-                });
                 this.newTitle="";
                 this.newSemester="";
                 this.newGrade="";
